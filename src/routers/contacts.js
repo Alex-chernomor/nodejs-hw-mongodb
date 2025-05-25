@@ -1,9 +1,11 @@
 import express from 'express';
+import { validateObjectId } from '../middlewares/validateObjectId.js';
+
 import {
   getContactsController,
   getContactByIdController,
   deleteContactController,
-  cteateContactController,
+  createContactController,
   updateContactController,
 } from '../controllers/contacts.js';
 
@@ -15,12 +17,25 @@ const jsonParser = express.json();
 
 router.get('/', ctrlWrapper(getContactsController));
 
-router.get('/:contactId', ctrlWrapper(getContactByIdController));
+router.get(
+  '/:contactId',
+  validateObjectId(),
+  ctrlWrapper(getContactByIdController),
+);
 
-router.delete('/:contactId', ctrlWrapper(deleteContactController));
+router.delete(
+  '/:contactId',
+  validateObjectId(),
+  ctrlWrapper(deleteContactController),
+);
 
-router.post('/', jsonParser, ctrlWrapper(cteateContactController));
+router.post('/', jsonParser, ctrlWrapper(createContactController));
 
-router.patch('/:contactId', jsonParser, ctrlWrapper(updateContactController));
+router.patch(
+  '/:contactId',
+  validateObjectId(),
+  jsonParser,
+  ctrlWrapper(updateContactController),
+);
 
 export default router;
