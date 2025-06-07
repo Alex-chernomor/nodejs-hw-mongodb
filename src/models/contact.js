@@ -20,13 +20,18 @@ const contactSchema = new mongoose.Schema(
       default: false,
     },
     contactType: {
-      type: String, 
+      type: String,
       enum: ['work', 'home', 'personal'],
       required: true,
       default: 'personal',
     },
+    userId:{
+      type: mongoose.Schema.Types.ObjectId,
+      required: true
+    }
   },
   {
+    versionKey: false,
     timestamps: true,
   },
 );
