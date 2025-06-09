@@ -42,7 +42,7 @@ export async function getContactByIdController(req, res) {
     throw createHttpError.NotFound('Contact not found');
   }
 
-  if (contact.userId.toString() !== req.user.id.toString()) {
+  if (contact.userId.toString() !== req.user._id.toString()) {
     throw new createHttpError.NotFound('Contact not found');
   }
 
