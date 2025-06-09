@@ -10,7 +10,7 @@ export async function registerController(req, res) {
 
   res
     .status(201)
-    .json({ status: 200, message: 'User created successfully', data: user });
+    .json({ status: 201, message: 'User created successfully', data: user });
 }
 
 export async function loginController(req, res) {
@@ -70,6 +70,4 @@ export async function refreshController(req, res) {
       accessToken: session.accessToken,
     },
   });
-
-  res.end();
 }
