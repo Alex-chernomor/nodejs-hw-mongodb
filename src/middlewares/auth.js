@@ -30,7 +30,7 @@ export async function auth(req, res, next) {
   const user = await User.findOne({ _id: session.userId });
 
   if (user === null) {
-    return next(new createHttpError.Unauthorized('User not found'));return 
+    return next(new createHttpError.Unauthorized('User not found')); 
   }
 
   req.user = { _id: user._id, name: user.name };

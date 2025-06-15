@@ -25,10 +25,15 @@ const contactSchema = new mongoose.Schema(
       required: true,
       default: 'personal',
     },
-    userId:{
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true
-    }
+      required: true,
+    },
+    photo: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
   {
     versionKey: false,
