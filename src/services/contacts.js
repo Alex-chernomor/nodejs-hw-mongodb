@@ -16,7 +16,6 @@ export const getAllContacts = async ({
     filterObject.contactType = filter.type;
   }
 
-2
   const [totalItems, contacts] = await Promise.all([
     Contact.countDocuments(filterObject),
     Contact.find(filterObject)
