@@ -11,6 +11,8 @@ import {
 } from '../controllers/contacts.js';
 
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
+
+import { upload } from '../middlewares/upload.js';
 import {
   createContactSchema,
   updateContactSchema,
@@ -28,6 +30,7 @@ router.delete('/:contactId', isValidId, ctrlWrapper(deleteContactController));
 
 router.post(
   '/',
+  upload.single('photo'),
   jsonParser,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),

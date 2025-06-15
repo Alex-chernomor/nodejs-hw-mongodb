@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
@@ -10,6 +12,8 @@ import cookieParser from 'cookie-parser';
 const PORT = Number(getEnvVar('PORT', '3000'));
 
 const app = express();
+
+app.use('/photo', express.static(path.resolve('src', 'uploads', 'photos')));
 
 app.use(cookieParser());
 export async function setupServer() {
