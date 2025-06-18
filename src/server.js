@@ -13,6 +13,10 @@ const PORT = Number(process.env.PORT || getEnvVar('PORT', '3000'));
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 app.use('/photo', express.static(path.resolve('src', 'uploads', 'photos')));
 
 app.use(cookieParser());
