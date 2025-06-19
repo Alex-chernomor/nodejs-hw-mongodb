@@ -4,6 +4,3 @@ import { setupServer } from './server.js';
 
 initMongoConnection();
 setupServer();
-
-
-
