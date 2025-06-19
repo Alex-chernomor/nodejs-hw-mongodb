@@ -18,6 +18,7 @@ import {
   refreshController,
   sendResetEmailController,
   resetPasswordController,
+  getOAuthController,
 } from '../controllers/auth.js';
 
 const router = express.Router();
@@ -54,5 +55,7 @@ router.post(
   validateBody(resetPasswordSchema),
   ctrlWrapper(resetPasswordController),
 );
+
+router.get('/get-oauth-url', ctrlWrapper(getOAuthController));
 
 export default router;
