@@ -97,3 +97,7 @@ export async function resetPasswordController(req, res) {
        data: {}
    });
 }
+
+export async function getOAuthController(req,res) {
+  res.end
+}
