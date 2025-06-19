@@ -4,4 +4,3 @@ import { setupServer } from './server.js';
 
 initMongoConnection();
 setupServer();
-https://github.com/Alex-chernomor/nodejs-hw-mongodb
