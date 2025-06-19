@@ -105,7 +105,7 @@ export async function sendResetEmail(email) {
 
   const tamplate = Handlebars.compile(RESET_PASSWORD_TEMPALTE);
 
-  const frontEnd= getEnvVar('APP_DOMAIN')
+  const frontEnd = getEnvVar('APP_DOMAIN');
 
   await sendMail(
     user.email,
@@ -128,7 +128,7 @@ export async function resetPassword(password, token) {
 
     await User.findByIdAndUpdate(user._id, { password: hashedPassword });
   } catch (error) {
-     if (error.name === 'JsonWebTokenError') {
+    if (error.name === 'JsonWebTokenError') {
       throw new createHttpError.Unauthorized('Token is unauthorized');
     }
 
@@ -138,4 +138,27 @@ export async function resetPassword(password, token) {
 
     throw error;
   }
+}
+
+export async function loginOrRegister(email, name) {
+  let user = await User.findOne({ email });
+
+  if (user === user) {
+    const password = await bcrypt.hash(
+      crypto.randomBytes(30).toString('base64'),
+      10,
+    );
+
+    user = await User.create({ name, email, password });
+  }
+
+  await Session.deleteOne({ userId: user._id });
+
+  return Session.create({
+    userId: user._id,
+    accessToken: crypto.randomBytes(30).toString('base64'),
+    refreshToken: crypto.randomBytes(30).toString('base64'),
+    accessTokenValidUntil: new Date(Date.now() + 10 * 60 * 1000),
+    refreshTokenValidUntil: new Date(Date.now() + 24 * 60 * 60 * 1000),
+  });
 }

@@ -1,0 +1,56 @@
+tags: 
+  - Contacts
+summary: Get all contacts
+operationId: getAllContacts
+description: Get all contacts
+security:
+  - bearerAuth: []
+parameters:
+  - name: page
+    in: query
+    required: false
+    schema:
+      type: integer
+      default: 1
+      example: 7
+    description: Number of current page
+  - name: perPage
+    in: query
+    required: false
+    schema:
+      type: integer
+      default: 4
+      example: 3
+    description: Number of contacts per page
+  - name: sortBy
+    in: query
+    required: false
+    schema:
+      type: string
+      enum: ['asc', 'desc']
+      example: asc 
+    description: asc - sort by ascending, desc - sort by descending 
+responses:
+  '201':
+    description: Created a contact
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Contact creadet successfully
+            data:
+              $ref: ../../components/schemas/contact.yaml
+  '401':
+    $ref: ../../components/responses/401.yaml
+  '500':
+    $ref: ../../components/responses/500.yaml
