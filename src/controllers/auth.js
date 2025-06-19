@@ -138,6 +138,3 @@ export async function confirmOAuthController(req, res) {
   });
 }
 
-export async function getOAuthController(req,res) {
-  res.end()
-}
