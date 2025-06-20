@@ -71,9 +71,6 @@ export async function deleteContactController(req, res) {
 }
 
 export async function createContactController(req, res) {
-  console.log(req.body);
-  console.log('BODY:', req.body);
-  console.log('FILE:', req.file);
   let photo = null;
 
   if (req.file) {
@@ -105,7 +102,6 @@ export async function createContactController(req, res) {
 
 export async function updateContactController(req, res) {
   const contactId = req.params.contactId;
-console.log('UPLOAD_TO_CLOUDINARY:', getEnvVar('UPLOAD_TO_CLOUDINARY'));
 
   let photo = null;
 
@@ -117,7 +113,7 @@ console.log('UPLOAD_TO_CLOUDINARY:', getEnvVar('UPLOAD_TO_CLOUDINARY'));
     } else {
       await fs.rename(
         req.file.path,
-        path.resolve('src', 'uploads', 'photos', req.file.filename)
+        path.resolve('src', 'uploads', 'photos', req.file.filename),
       );
       photo = `http://localhost:3000/photos/${req.file.filename}`;
     }
@@ -126,7 +122,7 @@ console.log('UPLOAD_TO_CLOUDINARY:', getEnvVar('UPLOAD_TO_CLOUDINARY'));
   const updatedData = {
     ...req.body,
     isFavourite: req.body.isFavourite === 'true',
-    ...(photo !== null && { photo }), 
+    ...(photo !== null && { photo }),
   };
 
   const result = await updateContact(contactId, updatedData, req.user._id);
