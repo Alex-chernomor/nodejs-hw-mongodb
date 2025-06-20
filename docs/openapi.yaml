@@ -13,7 +13,7 @@ tags:
     description: Operation with contacts
   
 servers:
-  - url: http://localhost:3000
+  - url: https://nodejs-hw-mongodb-0f2k.onrender.com/
 
 paths:
   /contacts/{id}:

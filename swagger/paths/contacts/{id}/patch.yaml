@@ -2,16 +2,23 @@ tags:
   - Contacts
 summary: Update contact by id
 operationId: updateContact
-description: GeUpdatet contact by id
+description: Updatet contact by id
 security:
   - bearerAuth: []
 parameters:
   - in: path
-    name: id
+    name: _id
     required: true
     schema:
       type: string
       example: 507f1f77bcf86cd799439011
+    description: Contact id
+requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          $ref: '../../../components/schemas/updateContact.yaml'
 responses:
   '200':
     description: Get contact by id

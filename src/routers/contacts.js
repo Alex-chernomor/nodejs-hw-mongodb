@@ -1,6 +1,5 @@
 import express from 'express';
 import { isValidId } from '../middlewares/validateObjectId.js';
-// import { validateBody } from '../middlewares/validateBody.js';
 
 import {
   getContactsController,
@@ -13,10 +12,6 @@ import {
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 
 import { upload } from '../middlewares/upload.js';
-// import {
-//   createContactSchema,
-//   updateContactSchema,
-// } from '../validation/contact.js';
 
 const router = express.Router();
 
