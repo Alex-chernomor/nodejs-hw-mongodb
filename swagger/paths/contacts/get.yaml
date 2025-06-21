@@ -59,7 +59,34 @@ responses:
               type: string
               example: Successfully found contacts!
             data:
-              $ref: ../../components/schemas/contact.yaml
+              type: object
+              description: Data object        
+            page:
+              type: integer
+              example: 3
+              default: 1
+              description: Number of current page
+            perPage: 
+              type: integer
+              example: 7
+              default: 4
+              description: Contacts per page
+            totalItems:
+              type: integer
+              example: 0
+              description: Total contacts
+            totalPages:
+              type: integer
+              example: 1
+              description: Total pages
+            hasPreviousPage:
+              type: boolean
+              example: false
+              description: Informs if there is a previous page
+            hasNextPage:
+               type: boolean
+               example: false
+               description: Informs if there is a next page
   '401':
     $ref: ../../components/responses/401.yaml
   '500':

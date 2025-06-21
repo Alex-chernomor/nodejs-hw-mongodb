@@ -24,5 +24,6 @@
       example: personal
     photo: 
       type: string
+      format: binary
       description: Contact photo url
-      example: https://res.cloudinary.com/du4kopryf/image/upload/v1750326442/unurni4pvjzskqnj2j9o.jpg
+      # example: https://res.cloudinary.com/du4kopryf/image/upload/v1750326442/unurni4pvjzskqnj2j9o.jpg
