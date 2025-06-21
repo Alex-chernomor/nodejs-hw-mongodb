@@ -43,8 +43,8 @@
       example: 68459f0055ff84d15f176f3e
     photo: 
       type: string
+      format: binary
       description: Contact photo url
-      example: https://res.cloudinary.com/du4kopryf/image/upload/v1750326442/unurni4pvjzskqnj2j9o.jpg
     createdAt: 
       type: string
       format: date-time

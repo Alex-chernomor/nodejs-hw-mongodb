@@ -360,17 +360,6 @@
           "500": {
             "$ref": "#/components/responses/500"
           }
-        },
-        "Parameters": {
-          "page": {
-            "description": "Page number",
-            "content": {
-              "multipart/form-data": {
-                "type": "integer",
-                "example": 1
-              }
-            }
-          }
         }
       },
       "get": {
@@ -461,7 +450,40 @@
                       "example": "Successfully found contacts!"
                     },
                     "data": {
-                      "$ref": "#/components/schemas/contact"
+                      "type": "object",
+                      "description": "Data object"
+                    },
+                    "page": {
+                      "type": "integer",
+                      "example": 3,
+                      "default": 1,
+                      "description": "Number of current page"
+                    },
+                    "perPage": {
+                      "type": "integer",
+                      "example": 7,
+                      "default": 4,
+                      "description": "Contacts per page"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 0,
+                      "description": "Total contacts"
+                    },
+                    "totalPages": {
+                      "type": "integer",
+                      "example": 1,
+                      "description": "Total pages"
+                    },
+                    "hasPreviousPage": {
+                      "type": "boolean",
+                      "example": false,
+                      "description": "Informs if there is a previous page"
+                    },
+                    "hasNextPage": {
+                      "type": "boolean",
+                      "example": false,
+                      "description": "Informs if there is a next page"
                     }
                   }
                 }
@@ -544,8 +566,8 @@
           },
           "photo": {
             "type": "string",
-            "description": "Contact photo url",
-            "example": "https://res.cloudinary.com/du4kopryf/image/upload/v1750326442/unurni4pvjzskqnj2j9o.jpg"
+            "format": "binary",
+            "description": "Contact photo url"
           },
           "createdAt": {
             "type": "string",
@@ -597,8 +619,8 @@
           },
           "photo": {
             "type": "string",
-            "description": "Contact photo url",
-            "example": "https://res.cloudinary.com/du4kopryf/image/upload/v1750326442/unurni4pvjzskqnj2j9o.jpg"
+            "format": "binary",
+            "description": "Contact photo url"
           }
         }
       }

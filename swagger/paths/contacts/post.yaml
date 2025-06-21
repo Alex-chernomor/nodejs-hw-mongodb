@@ -64,12 +64,5 @@ responses:
     $ref: ../../components/responses/401.yaml
   '500':
     $ref: ../../components/responses/500.yaml
-Parameters:
-  'page':
-    description: Page number
-    content:
-      multipart/form-data:
-        type: integer
-        example: 1
 
     
